@@ -11,7 +11,7 @@ async function handleCreate(event) {
   console.log("form data", message);
   debugger;
   if (message.username !== "" && message.displayname !== "") {
-    const response = await fetch("http://localhost:8080/users", {
+    const response = await fetch("https://weekfourproject.onrender.com/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(message),
@@ -22,7 +22,7 @@ async function handleCreate(event) {
       createError.textContent = "*username already exists";
     } else if (reply === "created") {
       localStorage.setItem("userinfo", JSON.stringify(message));
-      window.location.assign("http://127.0.0.1:5173/");
+      window.location.assign("https://cafe-client.onrender.com/");
     }
   } else {
     createError.textContent = "You need a username and display name";
@@ -38,7 +38,7 @@ async function handleSignIn(event) {
   console.log(message, message.usersignin);
   if (message.usersignin !== "") {
     const result = await fetch(
-      `http://localhost:8080/users?name=${message.usersignin}`
+      `https://weekfourproject.onrender.com/users?name=${message.usersignin}`
     );
     const userinfo = await result.json();
     console.log(result);
@@ -46,7 +46,7 @@ async function handleSignIn(event) {
       signin.reset();
     } else {
       localStorage.setItem("userinfo", JSON.stringify(userinfo[0]));
-      window.location.assign("http://127.0.0.1:5173/");
+      window.location.assign("https://cafe-client.onrender.com/");
     }
     signError.textContent = "User does not exist";
   } else {

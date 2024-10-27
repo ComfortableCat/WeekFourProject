@@ -9,13 +9,15 @@ const chat = document.getElementById("chat");
 
 console.log(userinfo);
 if (userinfo === 0) {
-  window.location.assign("http://127.0.0.1:5173/mockSignIn/mockSignIn.html");
+  window.location.assign(
+    "https://cafe-client.onrender.com/mockSignIn/mockSignIn.html"
+  );
 } else {
   loadPage();
 }
 
 async function loadPage() {
-  const response = await fetch("http://localhost:8080/");
+  const response = await fetch("https://weekfourproject.onrender.com/");
   const data = await response.json();
   console.log(userinfo);
   welcome.textContent = `Hello ${userinfo.username},`;
@@ -105,7 +107,7 @@ async function submitHandler(event) {
   const message = Object.fromEntries(formData);
   message.name = `${userinfo.displayname}`; //I should be doing this with the id primary key then doing smarter stuff
   console.log(message);
-  const response = await fetch("http://localhost:8080/", {
+  const response = await fetch("https://weekfourproject.onrender.com/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(message),
@@ -134,7 +136,7 @@ function buttonCheck(a) {
 async function deleteMsg(a) {
   const msgDiv = document.getElementsByClassName(`msgDiv ${a}`);
   const id = { id: a };
-  await fetch("http://localhost:8080/", {
+  await fetch("https://weekfourproject.onrender.com/", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
