@@ -10,7 +10,7 @@ const chat = document.getElementById("chat");
 console.log(userinfo);
 if (userinfo === 0) {
   window.location.assign(
-    "https://cafe-client.onrender.com/mockSignIn/mockSignIn.html"
+    "https://cafe-client.onrender.com/mockSignIn/index.html"
   );
 } else {
   loadPage();
