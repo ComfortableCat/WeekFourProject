@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./script.js" type="module" defer></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Welcome to Cafe</h1>
+    <p>Please Create Account</p>
+
+    <form id="create">
+      <p id="createError"></p>
+      <input
+        type="text"
+        name="username"
+        id="usernameInput"
+        placeholder="Username"
+      />
+      <input
+        type="text"
+        name="displayname"
+        id="displaynameInput"
+        placeholder="Displayname"
+      />
+      <button type="submit">Create account</button>
+    </form>
+    <p>or sign in</p>
+
+    <form id="signin">
+      <p id="signError"></p>
+      <input
+        type="text"
+        id="signInput"
+        placeholder="Username"
+        name="usersignin"
+      />
+      <button type="submit">Sign in</button>
+    </form>
+  </body>
+</html>
