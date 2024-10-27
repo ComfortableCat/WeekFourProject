@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import pg from "pg";
 
+const port = process.env.PORT || 4000;
 const app = express();
 dotenv.config();
 app.use(cors());
@@ -74,4 +75,4 @@ app.post("/users", async (req, res) => {
   }
 });
 
-app.listen(8080, () => console.log("listening on port 8080"));
+app.listen(port, () => console.log(`listening on port ${port}`));
