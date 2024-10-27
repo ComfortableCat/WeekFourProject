@@ -13,7 +13,7 @@ const db = new pg.Pool({
   connectionString: process.env.DB_CONN_STRING,
 });
 
-app.get("/", async (request, response) => {
+app.get("/", async function (request, response) {
   const result = await db.query("SELECT * FROM messages");
   const message = result.rows;
   response.json(message);
