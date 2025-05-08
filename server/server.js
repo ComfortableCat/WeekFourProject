@@ -29,10 +29,16 @@ app.post("/", async (req, res) => {
   );
   const disNam = display.rows;
   console.log(disNam);
-  await db.query(
-    "INSERT INTO messages (name, message, rating) VALUES ($1,$2,$3)",
-    [disNam[0].displayname, message, rating]
-  );
+  try {
+    const success = await db.query(
+      "INSERT INTO messages (name, message, rating) VALUES ($1,$2,$3)",
+      [disNam[0].displayname, message, rating]
+    );
+    console.log(success);
+    res.json("200");
+  } catch (error) {
+    res.json("404");
+  }
 });
 
 app.delete("/", async (req, res) => {

@@ -84,9 +84,16 @@ function loadForm(a) {
   } else {
     Form.append(msgP, txtArea, txtP, btn);
   }
-  Form.addEventListener("submit", (event) => {
+  Form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    submitHandler(event);
+    const result = await submitHandler(event);
+    const resultP = document.createElement("p");
+    if ((await result) === "200") {
+      resultP.textContent = "Success";
+    } else {
+      resultP.textContent = "Something went wrong";
+    }
+    Form.prepend(resultP);
   });
   txtArea.addEventListener("keydown", (event) => {
     const counter = document.getElementById("counter");
@@ -113,7 +120,7 @@ async function submitHandler(event) {
     body: JSON.stringify(message),
   });
   const reply = await response.json();
-  console.log(reply);
+  return reply;
 }
 
 function buttonCheck(a) {
