@@ -105,7 +105,7 @@ async function submitHandler(event) {
     document.getElementsByClassName("messageForm")[0]
   );
   const message = Object.fromEntries(formData);
-  message.name = `${userinfo.displayname}`; //I should be doing this with the id primary key then doing smarter stuff
+  message.name = `${userinfo.username}`; //I should be doing this with the id primary key then doing smarter stuff
   console.log(message);
   const response = await fetch("https://weekfourproject.onrender.com/", {
     method: "POST",
