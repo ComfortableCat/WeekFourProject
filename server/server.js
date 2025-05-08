@@ -28,7 +28,7 @@ app.post("/", async (req, res) => {
     [name]
   );
   const disNam = display.rows;
-  console.log(await disNam[0].displayname);
+  console.log(disNam);
   await db.query(
     "INSERT INTO messages (name, message, rating) VALUES ($1,$2,$3)",
     [disNam[0].displayname, message, rating]
@@ -37,7 +37,7 @@ app.post("/", async (req, res) => {
 
 app.delete("/", async (req, res) => {
   const msgId = req.body.id;
-  db.query("DELETE FROM messages WHERE id = $1", [msgId]);
+  await db.query("DELETE FROM messages WHERE id = $1", [msgId]);
   console.log(msgId);
 });
 

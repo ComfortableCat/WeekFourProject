@@ -113,6 +113,7 @@ async function submitHandler(event) {
     body: JSON.stringify(message),
   });
   const reply = await response.json();
+  console.log(reply);
 }
 
 function buttonCheck(a) {
