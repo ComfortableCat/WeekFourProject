@@ -6,8 +6,8 @@ import pg from "pg";
 const port = 8080;
 const app = express();
 dotenv.config();
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
 const db = new pg.Pool({
   connectionString: process.env.DB_CONN_STRING,
@@ -28,12 +28,11 @@ app.post("/", async (req, res) => {
     [name]
   );
   const disNam = display.rows;
-  console.log(disNam[0].displayname);
-  db.query("INSERT INTO messages (name, message, rating) VALUES ($1,$2,$3)", [
-    disNam[0].displayname,
-    message,
-    rating,
-  ]);
+  console.log(await disNam[0].displayname);
+  await db.query(
+    "INSERT INTO messages (name, message, rating) VALUES ($1,$2,$3)",
+    [disNam[0].displayname, message, rating]
+  );
 });
 
 app.delete("/", async (req, res) => {
